@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = stroyboard.instantiateInitialViewController() as! UINavigationController
         
         //아래.
-        //KOSession값이 열려있으면(로그인되있으면) 메인으로가고 안되있으면 로그인뷰컨트롤러로간다. 
+        //KOSession값이 열려있으면(로그인되있으면) 메인으로가고 안되있으면 로그인뷰컨트롤러로간다.
         let storyboardID = KOSession.shared().isOpen() ? "MainViewController" : "LoginViewController"
         let vc = stroyboard.instantiateViewController(withIdentifier: storyboardID)
         navigationController.viewControllers = [vc]

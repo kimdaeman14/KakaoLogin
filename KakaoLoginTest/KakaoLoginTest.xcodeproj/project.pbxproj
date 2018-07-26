@@ -28,6 +28,7 @@
 		A7014E4F2109797B006026C1 /* KakaoLoginTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KakaoLoginTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		A7014E5221097A6F006026C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A7014E5421097A90006026C1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A7014E5621098D21006026C1 /* 설명.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "설명.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +71,7 @@
 				A7014E4F2109797B006026C1 /* KakaoLoginTest-Bridging-Header.h */,
 				A7014E5221097A6F006026C1 /* LoginViewController.swift */,
 				A7014E5421097A90006026C1 /* MainViewController.swift */,
+				A7014E5621098D21006026C1 /* 설명.md */,
 			);
 			path = KakaoLoginTest;
 			sourceTree = "<group>";
