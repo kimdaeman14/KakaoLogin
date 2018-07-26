@@ -8,33 +8,51 @@
 
 import UIKit
 
+//    [KOSessionTask talkProfileTaskWithCompletionHandler:^(KOTalkProfile* profile, NSError* error) {
+//    if (profile) {
+//    NSLog(@"%@",profile.nickName);
+//    } else {
+//    NSLog(@"failed to get talk profile.");
+//    }
+//    }];
+
 class MainViewController: UIViewController {
 
+    
+    @IBOutlet weak var profileImageView:UIImageView!
+    @IBOutlet weak var thumbnailImageView:UIImageView!
+    @IBOutlet weak var nameLabel:UILabel!
+
+    @IBAction private func logoutButton(_ sender: UIButton){
+        KOSession.shared().close()
+        KOSession.shared().logoutAndClose { (success, error) in
+            switch success{
+            case false :
+                print(error)
+            case true:
+                self.dismiss(animated: true, completion: nil)
+                
+            }
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        KOSessionTask.userMeTask { [weak self] (error, userMe) in
+            print("userMeTask")
+            let profileUrl = userMe?.profileImageURL
+            let profileUrlData = try? Data(contentsOf: profileUrl!)
+            let thumbnailUrl = userMe?.thumbnailImageURL
+            let thumbnailUrlData = try? Data(contentsOf: thumbnailUrl!)
         
-//        KOSessionTask.userMeTask { (error, userMe) in
-//            userMe?.properties
-//        }
-        
-        // Do any additional setup after loading the view.
+            self?.nameLabel.text = userMe?.nickname
+            self?.profileImageView.image = UIImage(data: profileUrlData!)
+            self?.thumbnailImageView.image = UIImage(data: thumbnailUrlData!)
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 
 }
