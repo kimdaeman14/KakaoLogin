@@ -13,8 +13,10 @@ class LoginViewController: UIViewController {
     @IBAction private func loginButtonDidTap(_ sender: Any) {
         guard let session = KOSession.shared() else { return }
         // Close lod session
+        // 기존꺼가 열려있으면 닫아라?
         session.isOpen() ? session.close() : ()
         
+        //열어라 세션
         session.open(completionHandler: { (error) in
             if !session.isOpen() {
                 // 에러코드는 KOErrorCode 참고
@@ -31,7 +33,7 @@ class LoginViewController: UIViewController {
                 }
             }
         })
-        // }, authTypes: [NSNumber(value: KOAuthType.account.rawValue)!)
+        // }, authTypes: [NSNumber(value: KOAuthType.account.rawValue)!) //예전에느 ㄴ이렇게썼대.
     }
     
     override func viewDidLoad() {
@@ -40,20 +42,6 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }
